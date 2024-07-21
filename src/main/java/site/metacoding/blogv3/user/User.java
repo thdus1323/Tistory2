@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import site.metacoding.blogv3.board.Board;
 import site.metacoding.blogv3.category.Category;
 
 import java.time.LocalDateTime;
@@ -37,9 +38,12 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Category> categories;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Board> boards;
+
     @Builder
 
-    public User(Integer userId, String userName, String userPassword, String comfirmUserPassword, String userEmail, LocalDateTime createdAt, List<Category> categories) {
+    public User(Integer userId, String userName, String userPassword, String comfirmUserPassword, String userEmail, LocalDateTime createdAt, List<Category> categories, List<Board> boards) {
         this.userId = userId;
         this.userName = userName;
         this.userPassword = userPassword;
@@ -47,5 +51,6 @@ public class User {
         this.userEmail = userEmail;
         this.createdAt = createdAt;
         this.categories = categories;
+        this.boards = boards;
     }
 }

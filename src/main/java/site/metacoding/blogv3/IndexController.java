@@ -29,10 +29,7 @@ public class IndexController {
         return "/post/list";
     }
 
-    @GetMapping("/s/post/write-form")
-    public String poWriteForm() {
-        return "/post/writeForm";
-    }
+
 
 
 
